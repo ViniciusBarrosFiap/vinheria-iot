@@ -110,7 +110,7 @@ function Historicos() {
                     <div>
                         <h1>Luminosidade</h1>
                         <LineChart
-                            width={1800}
+                            width={1100}
                             height={300}
                             data={dataLuz}
                             margin={{
@@ -132,7 +132,7 @@ function Historicos() {
                     <div>
                         <h1>Temperatura</h1>
                         <LineChart
-                            width={1800}
+                            width={1100}
                             height={300}
                             data={dataTemp}
                             margin={{
@@ -154,7 +154,7 @@ function Historicos() {
                     <div>
                         <h1>Umidade</h1>
                         <LineChart
-                            width={1800}
+                            width={1100}
                             height={300}
                             data={dataUmidade}
                             margin={{

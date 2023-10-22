@@ -24,11 +24,16 @@ const DivTituloDestaque = styled.div`
 const SectionMedidores = styled.section`
     margin-top:2em;
     display:flex;
-    width:100%;
-    justify-content:space-around;
+    flex-direction:column;
+    width:40%;
+    align-items:center;
+    justify-content:center;
     div{
         border:1px solid black;
         border-radius:20px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
         p{
             padding:0.5em;
             text-align:center;
@@ -60,12 +65,12 @@ const SectionMedidores = styled.section`
     }
 `
 const Medidor = styled.div`
-    width: 300px;
+    width: 90%;
     height: 40px;
     border: 1px solid #000;
     border-radius:30px;
     position: relative;
-    margin:1em;
+    margin-top:1em;
     background-color:#303030
 `
 const Barra = styled.div`
@@ -229,6 +234,25 @@ function Medidores() {
                     <ul>
                         <li className={verificadorLuz}>{luminosidade > 20 && luminosidade < 30 ? "Ok" : "ATENÇÃO"}</li>
                     </ul>
+                    <LineChart
+                        width={800}
+                        height={300}
+                        data={dataLuz}
+                        margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="recvTime" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="valores" stroke="#8884d8" activeDot={{ r: 8 }} />
+                        {/* <Line type="monotone" dataKey="recvTime" stroke="#82ca9d" /> */}
+                    </LineChart>
                 </div>
                 <div>
                     <Medidor>
@@ -240,43 +264,8 @@ function Medidores() {
                     <ul>
                         <li className={verificadorTemp}>{temperatura > 10 && temperatura < 15 ? "Ok" : "ATENÇÃO"}</li>
                     </ul>
-                </div>
-                <div>
-                    <Medidor>
-                        <Barra style={barUmidadeStyle}></Barra>
-                    </Medidor>
-                    <p className={verificadorUmidade}>{umidade}%</p>
-                    <h2 className={verificadorUmidade}>Umidade</h2>
-                    <h2 className={`status ${verificadorUmidade}`}>Status:</h2>
-                    <ul>
-                        <li className={verificadorUmidade}>{umidade > 10 && umidade < 50 ? "Ok" : "ATENÇÃO"}</li>
-                    </ul>
-                </div>
-            </SectionMedidores>
-
-            <SectionMedidores>
-
-                <LineChart
-                    width={600}
-                    height={300}
-                    data={dataLuz}
-                    margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="recvTime" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="valores" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    {/* <Line type="monotone" dataKey="recvTime" stroke="#82ca9d" /> */}
-                </LineChart>
-                <LineChart
-                    width={600}
+                    <LineChart
+                    width={800}
                     height={300}
                     data={dataTemp}
                     margin={{
@@ -294,9 +283,19 @@ function Medidores() {
                     <Line type="monotone" dataKey="valores" stroke="#8884d8" activeDot={{ r: 8 }} />
                     {/* <Line type="monotone" dataKey="recvTime" stroke="#82ca9d" /> */}
                 </LineChart>
-
-                <LineChart
-                    width={600}
+                </div>
+                <div>
+                    <Medidor>
+                        <Barra style={barUmidadeStyle}></Barra>
+                    </Medidor>
+                    <p className={verificadorUmidade}>{umidade}%</p>
+                    <h2 className={verificadorUmidade}>Umidade</h2>
+                    <h2 className={`status ${verificadorUmidade}`}>Status:</h2>
+                    <ul>
+                        <li className={verificadorUmidade}>{umidade > 10 && umidade < 50 ? "Ok" : "ATENÇÃO"}</li>
+                    </ul>
+                    <LineChart
+                    width={800}
                     height={300}
                     data={dataUmidade}
                     margin={{
@@ -314,6 +313,15 @@ function Medidores() {
                     <Line type="monotone" dataKey="valores" stroke="#8884d8" activeDot={{ r: 8 }} />
                     {/* <Line type="monotone" dataKey="recvTime" stroke="#82ca9d" /> */}
                 </LineChart>
+                </div>
+            </SectionMedidores>
+
+            <SectionMedidores>
+
+                
+                
+
+                
             </SectionMedidores>
         </Main>
     )
